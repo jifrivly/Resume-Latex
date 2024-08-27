@@ -1,12 +1,12 @@
-\documentclass[10pt, letterpaper]{article}
+\documentclass[a4paper, 10pt]{article}
 
 % Packages:
 \usepackage[
     ignoreheadfoot, % set margins without considering header and footer
-    top=2 cm, % seperation between body and page edge from the top
-    bottom=2 cm, % seperation between body and page edge from the bottom
-    left=2 cm, % seperation between body and page edge from the left
-    right=2 cm, % seperation between body and page edge from the right
+    top=1.5 cm, % seperation between body and page edge from the top
+    bottom=1.5 cm, % seperation between body and page edge from the bottom
+    left=1.5 cm, % seperation between body and page edge from the left
+    right=1.5 cm, % seperation between body and page edge from the right
     footskip=1.0 cm, % seperation between body and footer
     % showframe % for debugging
 ]{geometry} % for adjusting page geometry
@@ -17,7 +17,7 @@
 \definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
 \usepackage{enumitem} % for customizing lists
 \usepackage{fontawesome5} % for using icons
-\usepackage{amsmath} % for math
+% \usepackage{amsmath} % for math
 \usepackage[
     pdftitle={Jifri's CV 08-2024},
     pdfauthor={Jifri},
@@ -25,15 +25,16 @@
     colorlinks=true,
     urlcolor=primaryColor
 ]{hyperref} % for links, metadata and bookmarks
-\usepackage[pscoord]{eso-pic} % for floating text on the page
+% \usepackage[pscoord]{eso-pic} % for floating text on the page
 \usepackage{calc} % for calculating lengths
-\usepackage{bookmark} % for bookmarks
+% \usepackage{bookmark} % for bookmarks
 \usepackage{lastpage} % for getting the total number of pages
 \usepackage{changepage} % for one column entries (adjustwidth environment)
-\usepackage{paracol} % for two and three column entries
-\usepackage{ifthen} % for conditional statements
+% \usepackage{paracol} % for two and three column entries
+% \usepackage{ifthen} % for conditional statements
 \usepackage{needspace} % for avoiding page brake right after the section title
 \usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+\usepackage{graphicx}
 
 % Ensure that generate pdf is machine readable/ATS parsable:
 \ifPDFTeX
@@ -70,63 +71,7 @@
 } % section title spacing
 
 \renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
-\newenvironment{highlights}{
-    \begin{itemize}[
-        topsep=0.10 cm,
-        parsep=0.10 cm,
-        partopsep=0pt,
-        itemsep=0pt,
-        leftmargin=0 cm + 10pt
-    ]
-}{
-    \end{itemize}
-} % new environment for highlights
 
-
-\newenvironment{highlightsforbulletentries}{
-    \begin{itemize}[
-        topsep=0.10 cm,
-        parsep=0.10 cm,
-        partopsep=0pt,
-        itemsep=0pt,
-        leftmargin=10pt
-    ]
-}{
-    \end{itemize}
-} % new environment for highlights for bullet entries
-
-\newenvironment{onecolentry}{
-    \begin{adjustwidth}{
-        0 cm + 0.00001 cm
-    }{
-        0 cm + 0.00001 cm
-    }
-}{
-    \end{adjustwidth}
-} % new environment for one column entries
-
-\newenvironment{twocolentry}[2][]{
-    \onecolentry
-    \def\secondColumn{#2}
-    \setcolumnwidth{\fill, 4.5 cm}
-    \begin{paracol}{2}
-}{
-    \switchcolumn \raggedleft \secondColumn
-    \end{paracol}
-    \endonecolentry
-} % new environment for two column entries
-
-\newenvironment{threecolentry}[3][]{
-    \onecolentry
-    \def\thirdColumn{#3}
-    \setcolumnwidth{, \fill, 4.5 cm}
-    \begin{paracol}{3}
-    {\raggedright #2} \switchcolumn
-}{
-    \switchcolumn \raggedleft \thirdColumn
-    \end{paracol}
-    \endonecolentry
-} % new environment for three column entries
 
 \newenvironment{header}{
     \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
@@ -149,6 +94,8 @@
 \let\hrefWithoutArrow\href
 
 % new command for external links:
+% Commands for icon sizing and positioning
+\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
 
 
 \begin{document}
@@ -181,13 +128,11 @@
         % \kern 5.0 pt%
         \AND%
         \kern 5.0 pt%
-        \mbox{\socialicon{\faLinkedin}
-        {\hrefWithoutArrow{https://www.linkedin.com/in/jifrivly/}{jifrivly}}}%
+        \mbox{\socialicon{\faLinkedin} {\hrefWithoutArrow{https://www.linkedin.com/in/jifrivly/}{jifrivly}}}%
         \kern 5.0 pt%
         \AND%
         \kern 5.0 pt%
-        \mbox{\socialicon{\faGithub}
-        {\hrefWithoutArrow{https://github.com/jifrivly}{jifrivly}}}%
+        \mbox{\socialicon{\faGithub} {\hrefWithoutArrow{https://github.com/jifrivly}{jifrivly}}}%
     \end{header}
 
 
@@ -195,258 +140,187 @@
 
 
     \section{Summary}
-        Full Stack Software Engineer with 5+ years of experience in building, testing, and deploying web applications. Skilled in JavaScript, TypeScript, and modern frameworks like React and Node.js. Strong focus on cloud technologies and DevOps practices.
+        Full Stack Software Engineer with 5+ years of experience in developing and deploying web applications and microservices. Proficient in JavaScript, TypeScript, and modern frameworks and libraries including React, Angular, Node.js, NestJS, and Vue.js. Experienced in designing scalable RESTful APIs and implementing robust state management solutions. Utilized various DevOps tools for deployment and monitoring.
+
 
     \section{Skills}
 
-        \begin{itemize}[leftmargin=0.2in]
-            \item \textbf{Languages:} JavaScript, TypeScript, SQL, HTML, CSS
-            \item \textbf{Frameworks/Libraries:} Node.js, React, Angular, Vue.js, Express, NestJS
-            \item \textbf{Tools/Technologies:} Git, Docker, Jenkins, AWS, Azure
-            \item \textbf{Databases:} MySQL, PostgreSQL, Elastic Search, MongoDB
-
+    \begin{itemize}[leftmargin=0.2in]
+        \item \textbf{Languages:} JavaScript, TypeScript.
+        \item \textbf{Frameworks/Libraries:} Node.js, React, Angular, Vue.js, Express, NestJS, Redux, Vuex, Bootstrap, Material-UI
+        \item \textbf{Tools:} Git, Docker, Vite, CRA, Vue CLI, Git, Postman, Swagger, DBeaver, SonarQube, Jenkins, GitHub Actions.
+        \item \textbf{Cloud/DevOps:} CI/CD, Datadog (Logging \& Monitoring), Pivotal Cloud Foundry (PCF), DigitalOcean, Bamboo.
+        \item \textbf{Databases:} MySQL, PostgreSQL, Elastic Search, MongoDB
     \end{itemize}
 
 
-
-    \section{Welcome To RenderCV!}
-
-
-
-        \begin{onecolentry}
-            \href{https://github.com/sinaatalay/rendercv}{RenderCV} is a LaTeX-based CV/resume framework. It allows you to create a high-quality CV or resume as a PDF file from a YAML file, with \textbf{full Markdown syntax support} and \textbf{complete control over the LaTeX code}.
-        \end{onecolentry}
-
-        \vspace{0.2 cm}
-
-        \begin{onecolentry}
-            The boilerplate content is taken from \href{https://github.com/dnl-blkv/mcdowell-cv}{here}, where a \textit{clean and tidy CV} pattern is proposed by \textbf{\href{https://www.gayle.com/}{Gayle Laakmann McDowell}}.
-        \end{onecolentry}
-
-
-
-    \section{Quick Guide}
-
-    \begin{onecolentry}
-        \begin{highlightsforbulletentries}
+    \section{Experience}
+    \subsection*{Full Stack Software Engineer, DBiz.ai -- Kochi \hfill May 2022 -- Present}
+    \begin{itemize}[leftmargin=0.2in]
+        \item Designed and implemented scalable RESTful APIs for both Backend-for-Frontend (BFF) and standard microservices.
+        \item Delivered responsive and dynamic single-page web applications using React and Vue.js.
+        \item Utilized React’s component-based architecture and hooks for state and lifecycle management, and implemented Redux for global state management.
+        \item Leveraged React Router for client-side routing and lazy loading, and applied React’s Suspense and Error Boundaries for asynchronous data fetching and error handling.
+        \item Utilized Bootstrap, Material-UI, AntD and Vuetify for UI components and styling.
+        \item Implemented comprehensive logging and monitoring solutions to enhance system observability.
+        \item Ensured application security and data integrity through rigorous validation measures.
+        \item Participated in the full software development lifecycle, including design, implementation, testing, and deployment.
+        \item Conducted code reviews and provided mentorship to junior developers.
+        \item Built and optimized CI/CD pipelines with GitHub Actions and Jenkins, reducing deployment time by 85\%.
+        \item Managed deployments and infrastructure with Bamboo, Pivotal Cloud Foundry (PCF), and DigitalOcean.
+        \item Collaborated with potential clients, including Telstra, Pingar, Aldar, etc., to deliver tailored software solutions.
+        \item Troubleshot and resolved complex production issues, ensuring system reliability.
+    \end{itemize}
 
 
-        \item Each section title is arbitrary, and each section contains a list of entries.
+    \subsection*{Software Engineer, Vuelogix Technologies Pvt Ltd -- Kochi \hfill July 2019 -- May 2022}
+    \begin{itemize}[leftmargin=0.2in]
+        \item Developed dynamic web interfaces using Angular, enhancing site responsiveness.
+        \item Utilized Angular’s dependency injection and modular architecture to improve code organization and testability.
+        \item Leveraged Angular's reactive forms and validation for complex user input handling and created custom directives for reusable UI components.
+        \item Implemented Angular's routing module for efficient navigation and lazy loading of modules.
+        \item Employed Angular’s change detection strategies to optimize performance in complex applications.
+        \item Designed RESTful APIs and backend services in Node.js and Express.
+        \item Worked on IoT-related applications, including high-frequency devices like SuperIor.
+        \item Explored Linux systems for better application deployment and management.
+        \item Developed IoT Dashboard applications and real-time monitoring system dashboards.
+    \end{itemize}
 
-        \item There are 7 unique entry types: \textit{BulletEntry}, \textit{TextEntry}, \textit{EducationEntry}, \textit{ExperienceEntry}, \textit{NormalEntry}, \textit{PublicationEntry}, and \textit{OneLineEntry}.
-
-        \item Select a section title, pick an entry type, and start writing your section!
-
-        \item \href{https://docs.rendercv.com/user_guide/}{Here}, you can find a comprehensive user guide for RenderCV.
-
-
-        \end{highlightsforbulletentries}
-    \end{onecolentry}
 
     \section{Education}
-
-
-
-
-        \begin{twocolentry}{
-            Sept 2000 – May 2005
-        }
-            \textbf{University of Pennsylvania}, BS in Computer Science\end{twocolentry}
-
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item GPA: 3.9/4.0 (\href{https://example.com}{Transcript})
-                \item \textbf{Coursework:} Computer Architecture, Artificial Intelligence, Comparison of Learning Algorithms, Computational Theory
-            \end{highlights}
-        \end{onecolentry}
-
-
-
-
-    \section{Experience}
-
-
-
-
-        \begin{twocolentry}{
-            June 2005 – Aug 2007
-        }
-            \textbf{Software Engineer}, Apple -- Cupertino, CA\end{twocolentry}
-
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Reduced time to render the user's buddy list by 75\% by implementing a prediction algorithm
-                \item Implemented iChat integration with OS X Spotlight Search by creating a tool to extract metadata from saved chat transcripts and provide metadata to a system-wide search database
-                \item Redesigned chat file format and implemented backward compatibility for search
-            \end{highlights}
-        \end{onecolentry}
-
-
-        \vspace{0.2 cm}
-
-        \begin{twocolentry}{
-            Sept 2003 – Apr 2005
-        }
-            \textbf{Lead Student Ambassador}, Microsoft -- Redmond, WA\end{twocolentry}
-
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Promoted to Lead Student Ambassador in the Fall of 2004, supervised 10-15 Student Ambassadors
-                \item Created and taught a computer science course, CSE 099: Software Design and Development
-            \end{highlights}
-        \end{onecolentry}
-
-
-        \vspace{0.2 cm}
-
-        \begin{twocolentry}{
-            Oct 2001 – May 2003
-        }
-            \textbf{Head Teaching Assistant}, University of Pennsylvania -- Philadelphia, PA\end{twocolentry}
-
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Implemented a user interface for the VS open file switcher (ctrl-tab) and extended it to tool windows
-                \item Created a service to provide gradient across VS and VS add-ins, optimized its performance via caching
-                \item Programmer Productivity Research Center (Summers 2001, 2002)
-                \item Built an app to compute the similarity of all methods in a code base, reducing the time from $\mathcal{O}(n^2)$ to $\mathcal{O}(n \log n)$
-                \item Created a test case generation tool that creates random XML docs from XML Schema
-            \end{highlights}
-        \end{onecolentry}
-
-
-        \vspace{0.2 cm}
-
-        \begin{twocolentry}{
-            June 2003 – Aug 2003
-        }
-            \textbf{Software Engineer, Intern}, Microsoft -- Redmond, WA\end{twocolentry}
-
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Automated the extraction and processing of large datasets from legacy systems using SQL and Perl scripts
-            \end{highlights}
-        \end{onecolentry}
-
-
-
-
-    \section{Publications}
-
-
-
-
-        \begin{samepage}
-            \begin{twocolentry}{
-                Jan 2004
-            }
-                \textbf{Magneto-Thermal Thin Shell Approximation for 3D Finite Element Analysis of No-Insulation Coils}
-            \end{twocolentry}
-
-            \vspace{0.10 cm}
-
-            \begin{onecolentry}
-                \mbox{Albert Smith}, \mbox{\textbf{\textit{Sayyid Muhammed Hasan Jifri}}}, \mbox{Jane Derry}, \mbox{Harry Tom}, \mbox{Frodo Baggins}
-
-                \vspace{0.10 cm}
-
-        \href{https://doi.org/10.1109/TASC.2023.3340648}{10.1109/TASC.2023.3340648}
-        \end{onecolentry}
-        \end{samepage}
-
-
-
-    \section{Projects}
-
-
-
-
-        \begin{twocolentry}{
-            \href{https://github.com/sinaatalay/rendercv}{github.com/name/repo}
-        }
-            \textbf{Multi-User Drawing Tool}\end{twocolentry}
-
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Developed an electronic classroom where multiple users can view and simultaneously draw on a "chalkboard" with each person's edits synchronized
-                \item Tools Used: C++, MFC
-            \end{highlights}
-        \end{onecolentry}
-
-
-        \vspace{0.2 cm}
-
-        \begin{twocolentry}{
-            \href{https://github.com/sinaatalay/rendercv}{github.com/name/repo}
-        }
-            \textbf{Synchronized Calendar}\end{twocolentry}
-
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Developed a desktop calendar with globally shared and synchronized calendars, allowing users to schedule meetings with other users
-                \item Tools Used: C\#, .NET, SQL, XML
-            \end{highlights}
-        \end{onecolentry}
-
-
-        \vspace{0.2 cm}
-
-        \begin{twocolentry}{
-            2002
-        }
-            \textbf{Operating System}\end{twocolentry}
-
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Developed a UNIX-style OS with a scheduler, file system, text editor, and calculator
-                \item Tools Used: C
-            \end{highlights}
-        \end{onecolentry}
-
-
-
-
-    \section{Additional Experience And Awards}
-
-
-
-
-        \begin{onecolentry}
-            \textbf{Instructor (2003-2005):} Taught 2 full-credit computer science courses
-        \end{onecolentry}
-
-        \vspace{0.2 cm}
-
-        \begin{onecolentry}
-            \textbf{Third Prize, Senior Design Project:} Awarded 3rd prize for a synchronized calendar project out of 100 entries
-        \end{onecolentry}
-
-
-
-    \section{Technologies}
-
-
-
-
-        \begin{onecolentry}
-            \textbf{Languages:} C++, C, Java, Objective-C, C\#, SQL, JavaScript
-        \end{onecolentry}
-
-        \vspace{0.2 cm}
-
-        \begin{onecolentry}
-            \textbf{Software:} .NET, Microsoft SQL Server, XCode, Interface Builder
-        \end{onecolentry}
-
-
+    \begin{itemize}[leftmargin=0.2in]
+        \item \textbf{Bachelor of Computer Application (BCA)}, Calicut University \hfill Graduated: 2018\\
+        MES KVM College, Valanchery, Malappuram, Kerala
+    \end{itemize}
+
+    \section{Certifications}
+    \begin{itemize}[leftmargin=0.2in]
+        \item \textbf{Fullstack Developer} - Kerala Development and Innovation Strategic Council
+        \item \textbf{Angular Complete Course} - Udemy
+    \end{itemize}
+
+
+    \section*{Project Details}
+
+
+    \subsection*{1. Live Aldar}
+    \textbf{Role:} Senior Full Stack Developer \\
+    \textbf{Client:} Aldar, a leading real estate development, management, and investment company. \\
+
+    \textbf{Project Description:}
+    Live Aldar is a comprehensive digital solution developed for Aldar. The application serves as a unified platform to manage and monitor various real estate operations, offering a seamless experience for both users and administrators. The system is designed to handle complex workflows and integrate with multiple external systems to provide real-time data and insights.
+
+    \textbf{Technical Details:}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.3 cm + 10pt]
+        \item \textbf{Frontend:} Developed using React for a dynamic and responsive user interface.
+        \item \textbf{Backend:} Built with TypeScript and NestJS, incorporating 6 Backend-for-Frontend (BFF) microservices.
+        \item \textbf{Database:} PostgreSQL, with TypeORM for database interactions.
+        \item \textbf{Logging and Monitoring:} Implemented Datadog for robust logging and monitoring.
+        \item \textbf{Deployment:} Application deployment and management were handled by the DevOps team using Azure Function App.
+        \item \textbf{Integration:} The backend connected with multiple upstream APIs to ensure smooth data flow and operation.
+    \end{itemize}
+
+
+    \subsection*{2. GTM Dashboard}
+    \textbf{Role:} Senior Full Stack Developer \\
+    \textbf{Client:} Telstra, Australia's leading telecommunications company \\
+    \textbf{Project Description:}
+    The GTM Cloud Customer Operations Dashboard is a web application designed for Telstra, to streamline and enhance customer operations. The system features a single user interface supported by 3 Backend-for-Frontend (BFF) microservices, which interact with various upstream APIs to ensure efficient data processing and presentation. This architecture provides a seamless experience for Telstra's customer operations teams, enabling them to manage and optimize services for millions of Australian customers.
+
+    \textbf{Key Contributions:}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.3 cm + 10pt]
+        \item Developed frontend and backend components using Vue.js and Node.js.
+        \item Designed RESTful APIs and integrated the system with upstream APIs.
+        \item Optimized application performance and database queries.
+        \item Implemented logging and monitoring using Winston for improved system observability.
+        \item Ensured code quality and adherence to best practices
+        \item Managed deployments using Bamboo and Pivotal Cloud Foundry (PCF).
+        \item Troubleshot and resolved complex issues in production environments
+        \item Participated in architecture discussions and contributed to system design decisions
+        \item Participated in Agile ceremonies and mentored junior developers.
+    \end{itemize}
+
+    \textbf{Technologies:}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.3 cm + 10pt]
+        \item \textbf{Frontend:} Vue.js, Vuetify, Vuex, Vue Router
+        \item \textbf{Backend:} Node.js, Express.js, PostgreSQL, Sequelize ORM
+        \item \textbf{Other Tools:} PCF, Bamboo, SonarQube, Docker, Veracode, New Relic
+    \end{itemize}
+
+
+    \subsection*{3. Pingar Content Insight}
+    \textbf{Client:} Pingar \\
+    \textbf{Description:} Pingar Content Insights is an advanced data analytics tool built on top of the client's DiscoveryOne database, designed as an advanced search engine to explore, visualize, and extract meaningful information from large datasets, aiding in informed decision-making and a deeper understanding of data patterns.
+
+    \textbf{Role:} Frontend Developer with additional responsibilities in database design and backend support \\
+
+    \textbf{Responsibilities:}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.3 cm + 10pt]
+        \item Gathered and analyzed customer requirements. Developed reusable React components, hooks, Higher order components and used Redux Toolkit for state management.
+        \item Optimized performance using code splitting, lazy loading, and through efficient rendering and state management.
+        \item Integrated Amcharts for data visualization connected with APIs using Axios.
+        \item Implemented Microsoft AD FS UI for authentication and seamless user login, and SAML for secure access.
+        \item Participated in code reviews, contributed to backend API designing and Assisted in troubleshooting and resolving backend issues.
+        \item Contributed to database design, ensuring optimal structure for frontend data needs
+        \item Ensured responsive design for cross-device compatibility.
+    \end{itemize}
+
+    \textbf{Technical Details:}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.3 cm + 10pt]
+        \item \textbf{Frontend:} ReactJS, Redux Toolkit, Amcharts, Axios, Jest.
+        \item \textbf{Backend:} .NET, RESTful APIs, Elasticsearch, PostgreSQL.
+        \item \textbf{Authentication:} Microsoft AD FS, SAML, custom UI.
+        \item \textbf{Development:} Agile, Git, Bitbucket, CI/CD pipeline.
+    \end{itemize}
+
+
+    \subsection*{3. V-Audit}
+    \textbf{Description:} V-Audit is an AI-powered solution that automatically detects anomalies in video feeds, such as unauthorized personnel or compliance issues, raising tickets for detected incidents. It also allows users to manually raise tickets, This comprehensive approach enhances security monitoring and compliance in various environments.
+
+    \textbf{Role:} Front End Developer \\
+
+    \textbf{Responsibilities:}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.3 cm + 10pt]
+        \item Contributed to the project from inception, shaping system architecture and UI development.
+        \item Led Angular upgrades from version 10 to 13, ensuring smooth transitions.
+        \item Debugged client-side and server-side issues (Java and Python).
+        \item Implemented data visualization with D3.js and ensured responsive design using Bootstrap.
+        \item Collaborated with backend developers to integrate frontend with Java and Django backends.
+        \item Participated in code reviews and troubleshooting cross-functional issues.
+    \end{itemize}
+
+    \textbf{Technical Details:}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.3 cm + 10pt]
+        \item \textbf{Frontend:} Angular, TypeScript, RxJS, Bootstrap, D3.js, Semantic HTML.
+        \item \textbf{Backend:} Custom AI service, Python Django-based BFF and API Gateway, Java.
+        \item \textbf{Database:} MySQL.
+        \item \textbf{Development:} Git, Agile methodology.
+    \end{itemize}
+
+
+    \subsection*{4. IOScope}
+    \textbf{Description:} IOScope is a robust software system designed for managing and monitoring high-frequency I/O devices, particularly semiconductor devices like SuperIor. It ensures accurate, low-latency data processing, providing detailed insights for informed decision-making on device performance and maintenance.
+
+    \textbf{Role:} Frontend Developer with contributions to database design \\
+
+    \textbf{Responsibilities:}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.3 cm + 10pt]
+        \item Developed and maintained Angular-based frontend components for smooth user interactions.
+        \item Implemented responsive design using Angular Material to enhance UX.
+        \item Designed and optimized database schema to meet frontend data needs.
+        \item Debugged and resolved issues in both frontend and database components.
+        \item Enhanced data visualization using Angular components for better performance insights.
+        \item Collaborated with backend developers to integrate with Java-based services.
+        \item Participated in system testing, quality assurance, and troubleshooting production issues.
+    \end{itemize}
+
+    \textbf{Technical Details:}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.3 cm + 10pt]
+        \item \textbf{Frontend:} Angular, TypeScript, Angular Material, RxJS.
+        \item \textbf{Backend:} Java-based services for processing high-frequency device data.
+        \item \textbf{Database:} MySQL with schema design optimized for low latency.
+        \item \textbf{Development:} Git for version control, Agile methodology.
+    \end{itemize}
 
 
 \end{document}
