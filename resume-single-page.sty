@@ -1,0 +1,197 @@
+\documentclass[a4paper,10pt]{article}
+
+
+% Packages import -------------------------------------------------------
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=0.5in, % separation between body and page edge from the top
+    bottom=0.75in, % separation between body and page edge from the bottom
+    left=1.5cm, % separation between body and page edge from the left
+    right=1.5cm, % separation between body and page edge from the right
+    footskip=1.0cm, % separation between body and footer
+    % showframe % for debugging
+]{geometry} % for adjusting page geometry
+\usepackage{charter} % for a clean and readable font
+\usepackage{titlesec} % for customizing section titles
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+% \usepackage{cmbright} %
+% \usepackage[scaled=0.9]{helvet} %
+% \usepackage{lmodern} %
+
+% \usepackage{fontspec} % only for XeLaTeX or LuaLaTeX
+% \setmainfont{Fira Sans} % Or Roboto, or any installed font only for XeLaTeX or LuaLaTeX
+% \definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage[
+    pdftitle={Jifri's CV 08-2024},
+    pdfauthor={Jifri},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata, and bookmarks
+\usepackage{needspace} % for avoiding page break right after the section title
+\usepackage{calc} % for calculating lengths eg: {1rem - 0.3cm}
+
+% TODO: not sure
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one-column entries (adjustwidth environment)
+% \usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+% \usepackage{graphicx} % for adding images
+% \usepackage{tabularx} % for making tables with fixed-width columns
+% \usepackage{array} % tabularx requires this
+% \usepackage[dvipsnames]{xcolor} % for coloring text
+% \usepackage{enumitem} % for customizing lists
+% \usepackage{amsmath} % for math
+% \usepackage[pscoord]{eso-pic} % for floating text on the page
+% \usepackage{bookmark} % for bookmarks
+% \usepackage{paracol} % for two and three column entries
+% \usepackage{ifthen} % for conditional statements
+
+
+% Ensure that generated PDF is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+
+% Some settings ----------------------------------------------------------
+% Hyperlinks
+\hypersetup{colorlinks=true, linkcolor=blue, filecolor=magenta, urlcolor=cyan}
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column separation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{-1pt}{0.3cm}{0.2cm} % section title spacing - {left}{top}{bottom}
+\setlength{\parindent}{0pt}
+
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+% new environment for the header
+\newenvironment{header}{\setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}}{\par\kern\topsep}
+% New command for external links:
+% Commands for icon sizing and positioning
+% \newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
+% Save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+
+% Document content -------------------------------------------------------
+\begin{document}
+    \newcommand{\AND}{\unskip\cleaders\copy\ANDbox\hskip\wd\ANDbox\ignorespaces}
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    % Document header ----------------------------------------------------
+    \begin{header}
+        \fontsize{20pt}{20pt}\selectfont \textbf{Sayyid Muhammed Hasan Jifri}
+        \vspace{5pt}
+
+        \small
+        \mbox{Kerala, India}
+        \kern 5.0pt \AND \kern 5.0pt
+        \faEnvelope \ \mbox{\hrefWithoutArrow{mailto:dev.jifri@gmail.com}{dev.jifri@gmail.com}}%
+        \kern 5.0pt \AND \kern 5.0pt
+        \faPhone \ \mbox{\hrefWithoutArrow{tel:+91-9744344978}{+91 9744344978}}%
+        % \kern 5.0pt \AND \kern 5.0pt
+        % \mbox{\hrefWithoutArrow{https://yourwebsite.com/}{yourwebsite.com}}%
+        \kern 5.0pt \AND \kern 5.0pt
+        \faLinkedin \ \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/jifrivly/}{linkedin.com/in/jifrivly}}
+        \kern 5.0pt \AND \kern 5.0pt
+        \faGithub \ \mbox{\hrefWithoutArrow{https://github.com/jifrivly}{github.com/jifrivly}}
+    \end{header}
+
+    \vspace{5pt - 0.3cm}
+
+    % Resume sumary -----------------------------------------------------
+    \section{Summary}
+        Full Stack Software Engineer with 5.5 years of experience in developing and deploying web applications and microservices. Proficient in JavaScript, TypeScript, and modern frameworks and libraries including React, Angular, Node.js, NestJS, and Vue.js. Experienced in designing scalable RESTful APIs and implementing robust state management solutions. Utilized various DevOps tools for deployment and monitoring.
+
+    % Skills ------------------------------------------------------------
+    \section{Skills}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.2in]
+        \item \textbf{Languages:} JavaScript, TypeScript.
+        \item \textbf{Frameworks/Libraries:} Node.js, React, Angular, Vue.js, Express, NestJS, Redux, Vuex, Bootstrap, Material-UI.
+        \item \textbf{Databases:} MySQL, PostgreSQL, ElasticSearch, MongoDB.
+        \item \textbf{Cloud/DevOps:} CI/CD, Datadog (Logging \& Monitoring), Pivotal Cloud Foundry (PCF), DigitalOcean, Bamboo.
+        \item \textbf{Tools:} Git, Docker, Postman, Swagger, DBeaver, Veracode, SonarQube, Jenkins, GitHub Actions.
+    \end{itemize}
+
+    % Experience -------------------------------------------------------
+    \section{Professional Experience}
+    \subsection{Full Stack Software Engineer, \textnormal{\emph{DBiz.ai}} -- \textnormal{Kochi} \hspace*{\fill} \textnormal{May 2022 -- Present}}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.2in]
+        \item Designed and delivered scalable RESTful APIs, dynamic SPAs with React and Vue.js, and implemented global state management using Redux and Vuex.
+        \item Built and optimized CI/CD pipelines (GitHub Actions, Jenkins) and managed deployments with PCF, Bamboo, and DigitalOcean, reducing deployment time by 85\%.
+        \item Enhanced system observability through logging/monitoring, ensured application security, and resolved production issues to maintain reliability.
+        \item Gained experience across diverse domains, such as airport big data analysis, telecom GTM solutions, and real estate ERP systems.
+        \item Collaborated with potential clients including Telstra, Pingar, Aldar, etc. and contributed to the SDLC through design, code reviews, and mentoring junior developers.
+    \end{itemize}
+
+    \subsection{Software Engineer, \textnormal{\emph{Vuelogix Technologies Pvt Ltd}} -- \textnormal{Kochi} \hspace*{\fill} \textnormal{July 2019 -- May 2022}}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.2in]
+        \item Developed dynamic web interfaces using Angular, leveraging reactive forms, custom directives, and modular architecture for scalability and testability.
+        \item Built RESTful APIs and backend services with Node.js, Express, and databases like MySQL, Postgres, and Clickhouse.
+        \item Designed IoT-focused solutions, including real-time monitoring dashboards and high-frequency device operations, optimizing performance and data visualization in projects like V-Audit and IOScope.
+        \item Collaborated across teams to deliver robust end-to-end solutions, integrating Linux systems and IoT technologies for enhanced application efficiency.
+    \end{itemize}
+
+    \section{Education}
+    \begin{itemize}[leftmargin=0.2in]
+        \item \textbf{Bachelor of Computer Application (BCA)}, Calicut University \hfill Graduated: 2018\\
+        MES KVM College, Valanchery, Malappuram, Kerala
+    \end{itemize}
+
+    \section{Certifications}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.2in]
+        \item \textbf{Fullstack Developer} - Kerala Development and Innovation Strategic Council  \hfill 2019
+        \item \textbf{Angular Complete Course} - Udemy  \hfill 2021
+    \end{itemize}
+
+    % Projects ----------------------------------------------------------
+    \section{Project Details}
+
+    \subsection{1. Live Aldar}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.2in]
+        \item \textbf{Client:} Aldar, a leading real estate development, management, and investment company
+        \item \textbf{Role:} Senior Full Stack Developer
+        \item \textbf{Highlights:} Built a scalable digital platform with TypeScript, React and NestJS microservices, integrating PostgreSQL and deploying on Azure Function App. Enhanced observability using Datadog for logging/monitoring.
+    \end{itemize}
+
+    \subsection{2. GTM Dashboard}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.2in]
+        \item \textbf{Client:} Telstra, Australia's leading telecommunications company
+        \item \textbf{Role:} Senior Full Stack Developer
+        \item \textbf{Highlights:} Developed customer operation tools with Vue.js and Node.js BFF microservices. Streamlined deployment with Bamboo and PCF. Improved observability and security with Winston, New Relic, Veracode and SonarQube.
+    \end{itemize}
+
+    \subsection{3. Pingar Content Insight}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.2in]
+        \item \textbf{Client:} Pingar - Airport Authority Hong Kong
+        \item \textbf{Role:} Frontend Developer with additional responsibilities in database design and backend support
+        \item \textbf{Highlights:} Built a React, .NET, PostgreSQL and Elasticsearch based data analytics tool using Amcharts for visualization, integrating secure authentication via SAML and Microsoft AD FS.
+    \end{itemize}
+
+    \subsection{4. V-Audit}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.2in]
+        \item \textbf{Role:} Frontend Developer
+        \item \textbf{Highlights:} Upgraded Angular projects from v6 to v10 and to v13. Designed data visualizations using D3.js and integrated with Python and Java backends for AI-powered anomaly detection for enhanced security monitoring.
+    \end{itemize}
+
+    \subsection{5. IOScope}
+    \begin{itemize}[topsep=0.10 cm, parsep=0.10 cm, partopsep=0pt, itemsep=0pt, leftmargin=0.2in]
+        \item \textbf{Client:} Digital Dynamics, Inc.
+        \item \textbf{Role:} Frontend Developer with contributions to database design
+        \item \textbf{Highlights:} Built a monitoring system for high-frequency semiconductor devices using Angular and optimized databases for low-latency data processing.
+    \end{itemize}
+
+\end{document}
